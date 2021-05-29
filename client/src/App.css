@@ -1,0 +1,25 @@
+
+*{
+  text-align: center;
+  box-sizing: border-box;
+}
+
+html{
+  font-size:64.5% ;
+}
+@media ( max-width:990px){
+  html{
+    font-size: 55%;
+  }
+}
+@media  (max-width:768px){
+  html{
+    font-size: 45%;
+  }
+
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(230, 224, 224);
+}

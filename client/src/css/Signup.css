@@ -1,0 +1,88 @@
+*{
+    text-align: center;
+    /* align-items: center; */
+}
+
+
+#signup-box{
+    width:50%;
+    height: 60rem;
+   
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+#signup-box>div{
+    width:60%;
+    border: 1px solid rgb(187, 185, 185);
+    margin: auto;
+    background-color: white;
+}
+h2{
+    font-size: 3rem;
+}
+
+#fb-signup{
+    width:70%;
+    color:white;
+    background-color: #0095f6;
+    margin: auto;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    font-style: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#fb-signup a{
+    color: white;
+}
+#signup-info{
+    height:80%;
+    
+}
+#signup-info>p{
+    font-size: 1.5rem;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+#gotoLogin{
+    height:15%;
+    font-size: 1.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#or{
+    display: flex;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    width: 70%;
+    margin: auto;
+}
+#or>hr{
+    width:50%;
+    height: 2px;
+}
+form{
+    width:70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+form>input{
+    border-radius: 5px;
+    border:1px solid grey;
+}
+#signup{
+    font-size:1.5rem;
+    color: white;
+    background-color: #0095f6;
+    height: 3rem;
+    border:none;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
