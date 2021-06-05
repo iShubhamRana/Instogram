@@ -4,7 +4,7 @@ const initialLoginUser={
 };
 export const changeLoginForm=(state=initialLoginUser,action)=>{
     switch(action.type){
-        case 'email': { return {...state,email:action.payload} }
+        case 'username': { return {...state,username:action.payload} }
         case 'password':{ return {...state,password:action.payload}; }
         default: return state;
     }

@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom';
 import {useSelector,useDispatch} from "react-redux";
 // import {emailChange, passwordChange} from "../actions/index";
 import {loginChanges} from "../actions/index";
-import login from "../api/login";
+import ExecuteLogin from "../api/ExecuteLogin";
+
+import {ToastContainer} from "react-toastify";
 
 
 import '../css/Login.css';
@@ -17,6 +19,17 @@ const Login = ()=>{
     
     return (
         <>
+         <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          />
           <div id="login-container">
               <div>
                     <img src={Instagram} />
@@ -26,13 +39,13 @@ const Login = ()=>{
                       <h1>Instogram</h1>
                       <form className="">
 
-                          <input type="email"  name="email"  required placeholder="Email" onChange={(e)=>{dispatch(loginChanges(e.target.name,e.target.value)) }} />
+                          <input type="text"  name="username"  required placeholder="Username" onChange={(e)=>{dispatch(loginChanges(e.target.name,e.target.value)) }} />
                           <input type="password" name="password" required placeholder="Password" onChange={(e)=>{dispatch(loginChanges(e.target.name,e.target.value))}}/>
-                          <button type="submit" onClick={()=>{login()}} >Log in</button>
+                          <button type="submit" onClick={(e)=>{ExecuteLogin(e,userState)}} >Log in</button>
                           <div ><hr /><span>OR</span> <hr /> </div>
                       </form>
                       <div id="fb-login">
-                         <a> Login with facebook </a>
+                         <a >Login with facebook </a>
                       </div>
                   </div>
                   <div id="login-signup">
@@ -46,6 +59,7 @@ const Login = ()=>{
               </div>
              
           </div>
+          
         </>
     );
 }

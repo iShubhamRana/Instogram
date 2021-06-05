@@ -1,0 +1,83 @@
+const express=require("express");
+const mongoose=require("mongoose");
+const cors=require("cors");
+const port = process.env.PORT || 3001;
+const passport=require("passport");
+const session=require("express-session");   
+const FacebookStrategy = require('passport-facebook').Strategy;
+const findOrCreate = require("mongoose-findorcreate");
+const app= express();
+
+
+
+//uses
+app.use(passport.initialize());   
+app.use(passport.session());
+app.use(express.static(__dirname+"/public"));
+app.use(express.json());
+app.use(cors());
+app.use(require(__dirname +"/router/auth.js"));
+
+app.use(session({
+    secret: "our little secret",
+    resave: false,
+    saveUninitialized: false
+}));
+const User=require("./model/userSchema");
+passport.use(User.createStrategy());
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+  passport.use(new FacebookStrategy({
+    clientID: 622090255415297,
+    clientSecret: "c53d6eb51e7521c1c27c137a44ae0c98",
+    callbackURL: "http://localhost:3001/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOne({'facebook_id':profile.id},(err,user)=>{
+      if (err) {
+        return done(err);
+    }
+    //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+    if (!user) {
+        user = new User({
+            name: profile.displayName,
+            username: profile.displayName+profile.id,
+            facebook_id:profile.id,
+            provider: 'facebook',
+            //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
+            facebook: profile._json
+        });
+        user.save(function(err) {
+            if (err) console.log(err);
+            return done(err, user);
+        });
+    } else {
+        //found user. Return
+        return done(err, user);
+    }
+    })
+  }
+));
+mongoose.connect("mongodb+srv://admin-shubham:rana2001shubham@cluster0.kzsaf.mongodb.net/usersDB" , {useNewUrlParser:true , useUnifiedTopology:true},()=>{
+    console.log("connect to DB");
+});
+
+mongoose.set('useCreateIndex', true);
+
+
+
+
+app.listen(port,()=>{
+    console.log("server running successfully on port 3001");
+})
+
+
+
