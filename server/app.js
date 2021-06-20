@@ -11,29 +11,24 @@ const app= express();
 
 
 //uses
+app.use(session({
+  secret: "our little secret",
+  resave: false,
+  saveUninitialized: false,
+  
+}));
 app.use(passport.initialize());   
 app.use(passport.session());
 app.use(express.static(__dirname+"/public"));
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 app.use(cors());
 app.use(require(__dirname +"/router/auth.js"));
+app.use(require(__dirname +"/router/posts-comment.js"));
 
-app.use(session({
-    secret: "our little secret",
-    resave: false,
-    saveUninitialized: false
-}));
+
 const User=require("./model/userSchema");
 passport.use(User.createStrategy());
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-  
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
+
 
   passport.use(new FacebookStrategy({
     clientID: 622090255415297,
@@ -66,7 +61,16 @@ passport.serializeUser(function(user, done) {
     })
   }
 ));
-mongoose.connect("mongodb+srv://admin-shubham:rana2001shubham@cluster0.kzsaf.mongodb.net/usersDB" , {useNewUrlParser:true , useUnifiedTopology:true},()=>{
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+mongoose.connect("mongodb+srv://admin-shubham:rana2001shubham@cluster0.kzsaf.mongodb.net/InstoDB" , {useNewUrlParser:true , useUnifiedTopology:true},()=>{
     console.log("connect to DB");
 });
 

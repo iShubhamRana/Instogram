@@ -7,7 +7,6 @@ import {useSelector,useDispatch} from "react-redux";
 // import {emailChange, passwordChange} from "../actions/index";
 import {loginChanges} from "../actions/index";
 import ExecuteLogin from "../api/ExecuteLogin";
-
 import {ToastContainer} from "react-toastify";
 
 
@@ -36,17 +35,19 @@ const Login = ()=>{
               </div>
               <div>
                   <div id="login-box">
+                  
                       <h1>Instogram</h1>
-                      <form className="">
-
+                      <form className="">   
                           <input type="text"  name="username"  required placeholder="Username" onChange={(e)=>{dispatch(loginChanges(e.target.name,e.target.value)) }} />
                           <input type="password" name="password" required placeholder="Password" onChange={(e)=>{dispatch(loginChanges(e.target.name,e.target.value))}}/>
                           <button type="submit" onClick={(e)=>{ExecuteLogin(e,userState)}} >Log in</button>
                           <div ><hr /><span>OR</span> <hr /> </div>
                       </form>
+
                       <div id="fb-login">
-                         <a >Login with facebook </a>
+                         <a href="http://localhost:3001/auth/facebook">Login with facebook </a>
                       </div>
+
                   </div>
                   <div id="login-signup">
                       Don't have an account? <NavLink to="/signup">Signup</NavLink>

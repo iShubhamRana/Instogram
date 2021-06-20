@@ -5,6 +5,8 @@ const User=require("../model/userSchema");
 const passportLocalMongoose=require("passport-local-mongoose");
 const passportLocal=require("passport-local");
 
+//for signup post request
+
 router.post("/signup",(req,res)=>{
   
     User.findOne({email:req.body.email},(err,user)=>{
@@ -19,28 +21,42 @@ router.post("/signup",(req,res)=>{
         }
         else {
         passport.authenticate("local")(req,res,()=>{
-            res.status(200).json({message:"user registered successfully"});
+          // req.login();
+            res.status(200).json({message:"user registered successfully",user:req.user});
         })
        }
     })
 
 });
 
+
+//for login post request
 router.post('/login',
   passport.authenticate('local'),
   function(req, res) {
-    res.status(200).json({message:"Logged in successfully!!"})
+    // req.login();
+    res.status(200).json({message:"Logged in successfully!!",user:req.user})
   });
    
-
+//routes for fb authentication
 router.get('/auth/facebook', passport.authenticate('facebook'));
-router.get('/auth/facebook/callback', function(req,res,next){
-  passport.authenticate('facebook',(err,user)=>{
-    if(err){
-     res.status(402).json({error:err.message});
-    }
-    else
-     res.status(200).json({message:"Logged in successfully! change the default username if you are logging in fot the first time"})
-    
-  })(req,res,next);});
+router.get('/auth/facebook/callback', passport.authenticate('facebook'), function(req,res){
+  res.redirect("http://localhost:3000/");
+});
+
+//for authentication and this will return the user data
+
+router.get('/authenticate',(req,res)=>{
+  if (req.isAuthenticated()){
+    res.status(200).json({message:" user authenticated",user:req.user});
+  }
+  else{
+    res.status(401).json({error:"user unauthorized"})
+  }
+  
+})
+
+
+
+
 module.exports=router;

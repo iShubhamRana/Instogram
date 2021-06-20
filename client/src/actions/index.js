@@ -11,4 +11,10 @@ export const signupChanges=(name,value)=>{
         payload:value
     }
 }
+export const setUser=(user)=>{
 
+    return {
+        type:'User',
+        payload:user
+    }
+}

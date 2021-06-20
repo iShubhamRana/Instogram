@@ -1,5 +1,5 @@
 const initialLoginUser={
-    email:'',
+    username:'',
     password:''
 };
 export const changeLoginForm=(state=initialLoginUser,action)=>{

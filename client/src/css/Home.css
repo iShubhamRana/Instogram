@@ -1,0 +1,111 @@
+
+*{
+    /* text-align: center; */
+}
+.Home{
+    width:80%;
+    margin: auto;
+    display: flex;
+    height: fit-content;
+    /* margin-top: 5rem; */
+    
+}
+.PostsDisplayer{
+    width: 65%;
+    height: 500rem;
+    border:1px solid rgb(187, 185, 185);
+
+}
+.Navbar{
+    position: sticky;
+    border:1px solid rgb(187, 185, 185);
+    height: 5rem;
+    width: 100%;
+    top: 0px;
+    z-index: 100;
+    background-color: white;
+    margin-bottom: 3rem;
+   
+}
+.Navbar-content{
+    display: flex;
+    width: 80%;
+    margin:auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons{
+    display: flex;
+    justify-content: space-around;
+    width:20rem;
+    /* background-color: black; */
+}
+.material-icons-outlined>img{
+    height:110%;
+    border: 3px solid white;
+}
+.Navbar input{
+    width:20rem;
+    height: 3rem;
+    margin-left: 8rem;
+    text-align: center;
+    border:1px solid rgb(187, 185, 185);
+    cursor: pointer;
+}
+
+/* for sideprofile component */
+
+.SideProfile{    
+
+    width:35%;
+    height:40rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top:8rem;
+}
+.SideProfile>div{
+    display: flex;
+    width:90%;
+    margin: auto;
+}
+.SideProfile>div>img{
+    width:6rem;
+    height:6rem;
+    border-radius: 50%;
+    border:2px solid black;
+    cursor: pointer;
+}
+.SideProfile-info-box{
+    width:70%;
+    /* font-family: 'barlow', sans-serif; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.SideProfile-info-box>p{
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-top: 0.2rem;
+}
+.SideProfile-info-box>p:nth-child(2){
+    color: grey;
+}
+.SideProfile button{
+    width: fit-content;
+    height: fit-content;
+    padding:0px;
+    margin-top:0.5rem;
+    cursor: pointer;
+    /* border-radius: ; */
+}
+.SideProfile button>img{
+    width:4rem;
+    height:4rem;
+    padding: 0px;
+    margin: 0px;
+}

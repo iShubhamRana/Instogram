@@ -13,7 +13,7 @@ const Signup=()=>{
                 <h2>Instogram</h2>
                 <p>Signup to see photos and videos from your friends</p>
                 <div id="fb-signup">
-                    <a href="#">Login with Facebook</a>
+                    <a href="http://localhost:3001/auth/facebook">Login with Facebook</a>
                 </div>
                 <div id="or"><hr></hr> OR <hr></hr></div>
                 <form className="signup-form">
@@ -32,5 +32,4 @@ const Signup=()=>{
        </div>
     </>);
 };
-
 export default Signup;
