@@ -1,13 +1,43 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import {useDispatch,useSelector} from "react-redux";
 import {signupChanges} from "../actions/index";
-import ExecuteSignup from "../api/ExecuteSignup";
+import axios from 'axios';
 import "../css/Signup.css";
+import Toast from './Toast';
+
 const Signup=()=>{
+
+    const [signed,setSigned]=useState(false);
+
+    
+    const ExecuteSignup= async(e,user)=>{
+        const email = user.semail;
+        const name = user.sname;
+        const username=user.susername;
+        const password=user.spassword;
+        e.preventDefault();
+        
+        const response = await axios.post("/signup",{
+            email,name,username,password
+        }).then((response)=>{
+            Toast(response.data.message,1);
+            setSigned(true);
+        }).catch((err)=>{
+            Toast(err.response.data.error,2);
+            
+        });    
+        
+       
+    }
+
+
+
+
     const userState=useSelector((state)=>{return state.signupFormChange})
     const dispatch=useDispatch();
     return (<>
+      {signed && <Redirect to="/home" />}
        <div id="signup-box">
            <div id="signup-info">
                 <h2>Instogram</h2>

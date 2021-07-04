@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import HomeIcon from "../Images/home_black_24dp.svg";
 import MessageIcon from "../Images/send_black_24dp.svg";
 import HeartIcon from "../Images/favorite_border_black_24dp.svg";
@@ -13,11 +13,11 @@ const Navbar=()=>{
                 <h1>Instogram</h1>
                 <input type="text" placeholder="search"></input>
                 <div className="icons">
-                <NavLink to="/home" class="material-icons-outlined"><img src={HomeIcon}/></NavLink>
-                <NavLink to="/home" class="material-icons-outlined"><img src={MessageIcon}/></NavLink>
-                <NavLink to="/home" class="material-icons-outlined"><img src={HeartIcon}/></NavLink>
-                <NavLink to="/home" class="material-icons-outlined"><img src={ExploreIcon}/></NavLink>
-                <NavLink to="/home" class="material-icons-outlined"><img src={AccountIcon}/></NavLink>
+                <Link to="/home" className="material-icons-outlined"><img src={HomeIcon}/></Link>
+                <Link to="/home" className="material-icons-outlined"><img src={MessageIcon}/></Link>
+                <Link to="/home" className="material-icons-outlined"><img src={HeartIcon}/></Link>
+                <Link to="/home" className="material-icons-outlined"><img src={ExploreIcon}/></Link>
+                <Link to="/home" className="material-icons-outlined"><img src={AccountIcon}/></Link>
                 </div>
             </div>
         </div>

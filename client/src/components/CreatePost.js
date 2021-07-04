@@ -47,9 +47,9 @@ const CreatePost=()=>{
     //function handles post and uploads image to cloudinary
     const finishPost=(e)=>{
         e.preventDefault();
-        axios.post("https://api.cloudinary.com/v1_1/a-jsb/image/upload",{
-            "upload_preset": "d382ktke",
-            "cloudname": "a-jsb",
+        axios.post( process.env.REACT_APP_CLOUDINARY_UPLOAD,{
+            "upload_preset": process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+            "cloudname": process.env.REACT_APP_CLOUDINARY_UPLOAD_CLOUDNAME,
             "file":file
         }).then((response)=>{
             setFile(response.data.url);       

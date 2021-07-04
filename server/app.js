@@ -8,7 +8,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const app= express();
 
-
+require('dotenv').config();
 
 //uses
 app.use(session({
@@ -31,8 +31,8 @@ passport.use(User.createStrategy());
 
 
   passport.use(new FacebookStrategy({
-    clientID: 622090255415297,
-    clientSecret: "c53d6eb51e7521c1c27c137a44ae0c98",
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: "http://localhost:3001/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -70,7 +70,7 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-mongoose.connect("mongodb+srv://admin-shubham:rana2001shubham@cluster0.kzsaf.mongodb.net/InstoDB" , {useNewUrlParser:true , useUnifiedTopology:true},()=>{
+mongoose.connect(process.env.MONGO_URL , {useNewUrlParser:true , useUnifiedTopology:true , useFindAndModify: false },()=>{
     console.log("connect to DB");
 });
 

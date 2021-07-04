@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose=require("passport-local-mongoose");
+const User=require("./userSchema");
+const Comment=require("./commentSchema");
 const postSchema=mongoose.Schema({
-    User:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    User:{type: mongoose.Schema.Types.ObjectId, ref: User.modelName},
     date:Date,
     image:{
         type:String,
@@ -16,16 +18,16 @@ const postSchema=mongoose.Schema({
             type:Number,
             default:0  
           },
-        by:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]        
+        by:[{type: mongoose.Schema.Types.ObjectId, ref: User.modelName}]        
     },
     comments:{
         total:{
             type:Number,
             default:0  
           },
-        comment:{
-         type: mongoose.Schema.Types.ObjectId, ref: 'User' 
-        }
+        by:[{
+         type: mongoose.Schema.Types.ObjectId, ref:Comment.modelName 
+        }]
     }
     
 });

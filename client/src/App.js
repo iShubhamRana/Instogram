@@ -1,5 +1,5 @@
 import React  from "react";
-import { Redirect, Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -8,25 +8,28 @@ import Signup from './components/Signup';
 import PrivateRoute from "./routes/PrivateRoute";
 import Home from "./components/Home";
 import ProfilePage  from './components/ProfilePage';
-import Modal from "./components/Modal";
-import TestModal from "./components/TestModal";
 import EditAccount from "./components/EditAccount";
 import EditAccountPassword from "./components/EditAccountPassword";
+import { useLocation } from "react-router-dom";
+
 
 
 // import {Switch} from "react-router-dom";
 
 function App() {
+  const location=useLocation();
+  
   return (
     <div className="App">
-      <Switch>
+      <Switch >
         <Route exact path="/" component={()=>{return <Login />}} /> 
         <Route exact path="/signup" component={()=>{return <Signup />}} />       
-        <PrivateRoute exact path="/home" component={Home} /> 
-        <PrivateRoute exact path="/:username" component={()=>{return <ProfilePage />}} />
-        <PrivateRoute exact path="/accounts/edit" component={()=>{return <EditAccount/> }} />
-        <PrivateRoute exact path="/accounts/password/change" component={()=>{return <EditAccountPassword /> }} />
-      </Switch>
+        <Route exact path="/home" component={PrivateRoute} /> 
+        <Route exact path="/accounts/edit" component={PrivateRoute} />
+        <Route exact path="/accounts/password/change" component={PrivateRoute} />      
+        <Route  path="/:username" component={PrivateRoute} />
+
+      </Switch>     
       
        <ToastContainer /> 
      </div>

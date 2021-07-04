@@ -8,7 +8,10 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const userSchema=mongoose.Schema({
     name:String,
     email:String,
-    username:String,
+    username:{
+      type:String,
+      unique:true
+    },
     password:String,
     facebook_id:String,
     profile_pic:{

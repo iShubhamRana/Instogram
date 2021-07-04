@@ -1,34 +1,49 @@
-import React , {useEffect} from "react";
+import React , { useState} from "react";
 import AppStore from "../Images/appstore.png";
 import PlayStore from "../Images/playstore.png";
 import Instagram from "../Images/instagram.webp"
-import { NavLink } from 'react-router-dom';
+import { NavLink ,Redirect,Route} from 'react-router-dom';
 import {useSelector,useDispatch} from "react-redux";
-// import {emailChange, passwordChange} from "../actions/index";
 import {loginChanges} from "../actions/index";
-import ExecuteLogin from "../api/ExecuteLogin";
-import {ToastContainer} from "react-toastify";
+import axios  from "axios";
+import Toast from "./Toast";
 
 
 import '../css/Login.css';
 const Login = ()=>{
+    const [loggedIn,setLoggedIn]=useState(false);
+
+
+    const ExecuteLogin= (e,user)=>{
+        e.preventDefault();
+        const {username,password}=user;        
+         axios.post("/login",{
+          username,password
+         }).then((response)=>{
+          Toast(response.data.message,1);
+             setLoggedIn(true);
+         }).catch((err)=>{
+           if (err.response.status==401)
+            Toast("Invalid credentials",2);   
+           else 
+            Toast("Network issue");
+            return 0;
+         })
+         
+          
+      }
+
+
+
+
     
     const dispatch = useDispatch();
     const userState= useSelector((state)=>{ return state.changeLoginForm});
-    
+
     return (
         <>
-         <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          />
+       
+         {loggedIn && <Redirect to="/home" />}
           <div id="login-container">
               <div>
                     <img src={Instagram} />
@@ -60,7 +75,7 @@ const Login = ()=>{
               </div>
              
           </div>
-          
+       
         </>
     );
 }

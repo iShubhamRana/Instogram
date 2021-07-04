@@ -1,13 +1,18 @@
 import React,{useState, useEffect} from "react";
-import {Redirect, Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux";
 import axios from "axios";
 import Toast from "../components/Toast";
 import {setUser} from "../actions/index";
+import Home from "../components/Home";
+import ProfilePage from "../components/ProfilePage";
+import EditAccount from "../components/EditAccount";
+import EditAccountPasword from "../components/EditAccountPassword";
 const PrivateRoute=(props)=>{
   const dispatch=useDispatch();
   const [logged,setLogged]=useState(true);
   const [count,setCount]=useState(0); 
+  
 //the count is to make sure the useEffect hook runs only once the component renders.
 //else it will cause problems in each render
 
@@ -31,7 +36,14 @@ const PrivateRoute=(props)=>{
     return (
       (logged)?
         <>
-          <Route exact path={props.path} component={Component} />
+         
+          <Switch >
+            
+            <Route exact path="/accounts/edit" component={EditAccount} />
+            <Route exact path="/accounts/password/change" component={EditAccountPasword} />
+            <Route path="/home" component={Home} />
+            <Route path="/:username" component={ProfilePage} />
+          </Switch>
         </>
         :
         <Redirect to="/" />

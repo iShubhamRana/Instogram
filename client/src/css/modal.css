@@ -10,3 +10,8 @@
     background-color: rgb(231, 227, 227,0.5);
     
 }
+.modal{
+    background-color: red;
+    width: 50%;
+    height: 50%;
+}

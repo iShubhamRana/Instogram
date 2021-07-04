@@ -1,0 +1,96 @@
+.home-post-container{
+    width: 100%;
+    height: 73rem;
+    border-bottom:0.2px solid rgb(187, 185, 185);
+    background-color: white;
+}
+
+.home-post-author{
+    height: 9%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.home-post-author>div:nth-child(1){
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-post-author>div:nth-child(2){
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.home-post-author>div:nth-child(2)>a{
+    text-align: left;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.home-post-author img{
+    width:38px;
+    height:38px;
+    border-radius: 50%;
+}
+.home-post-image{
+    height: 72%;
+    width: 100%;
+}
+.home-post-image>img{
+    width:100%;
+    height: 100%;
+}
+.home-post-reaction{
+    height: 19%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.home-post-reaction>span{
+    font-size: 1.4rem;
+    text-align: left;
+    padding-left: 10px;
+    
+}
+.home-post-like{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.home-post-like>div:nth-child(1){
+    display: flex;
+    justify-content: space-evenly;
+    width: 140px;
+}
+.home-post-like>div:nth-child(2){
+    display: flex;
+    width: 40px;
+    justify-content: center;
+}
+.home-post-like img{
+    width: 30px;
+    height: 30px;
+}
+.home-post-reaction>form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+}
+.home-post-reaction>form input{
+    width: 70%;
+    height: 40px;
+    border: none;
+    padding: 5px;
+}
+.home-post-reaction>form button{
+    width: 20%;
+}
