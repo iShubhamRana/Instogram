@@ -111,7 +111,7 @@ const ProfilePage=(props)=>{
           
           <div className="Posts-Displayer">
           
-                    {userInPage.Post.Posts.map((post,index)=>{
+                    {userInPage.Post.Posts.slice(0).reverse().map((post,index)=>{
                       return <Link to={url+"/p/"+post._id}> <ProfilePagePost key={index} post={post} /></Link>
                     })}
           </div>

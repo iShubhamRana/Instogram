@@ -13,8 +13,8 @@
 }
 .PostsDisplayer{
     width: 58%;
-    height: 500rem;
-    border:1px solid rgb(187, 185, 185);
+    height: fit-content;
+    
 
 }
 .Navbar{
@@ -26,7 +26,7 @@
     z-index: 100;
     background-color: white;
     margin-bottom: 3rem;
-   
+    
 }
 .Navbar-content{
     display: flex;
@@ -34,6 +34,8 @@
     margin:auto;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    
 }
 .icons{
     display: flex;
@@ -110,4 +112,89 @@
     height:4rem;
     padding: 0px;
     margin: 0px;
+}
+.suggestion-box{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.suggestion-box>:nth-child(1){
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: grey;
+}
+.suggested-people>div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    
+}
+.suggested-people>div>div:nth-child(1){
+    width:50px;
+  
+}
+.suggested-people img{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+}
+.suggested-people>div>div:nth-child(2){
+    width: 80%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: s;
+    margin-left:25px;
+    font-size: 1.5rem;
+}
+.suggested-people>div>div:nth-child(2)>span{
+    width: 100%;
+    text-align: left ;
+}
+.suggested-people>div>div:nth-child(2)>span:nth-child(2){
+    color:rgb(94, 93, 93)
+}
+.search-btn{
+    justify-content: center;
+    align-items:center;
+    padding:1px;
+    cursor: pointer;
+}
+.result-box{
+    border:1px solid rgb(187, 185, 185);
+    background-color: white;
+    margin-left: 4rem;
+    width: 35rem;
+    min-height: fit-content;
+    max-height: 30rem;
+    border-radius: 15px;
+    overflow-y: scroll;
+    padding:5px;
+    position: absolute;
+    top:4rem;
+    
+    
+}
+.result-box img{
+    width: 35px;
+    height: 35px;
+}
+.result-box div{
+    font-size: 1.3rem !important;
+}
+.result-box>div:nth-child(1){
+  
+    width: 100%;
+    display: flex;
+    justify-content: flex-end !important;
+}
+.result-box>div:nth-child(1)>button{
+   padding:0.5px;
+}
+.search-bar{
+ display: flex;
+ flex-direction: column;
 }

@@ -13,14 +13,13 @@ const Home=()=>{
     const user= useSelector((state)=>{return state.currentUser})
     
     return (
-        <>
-       
+       <>   
      
         <Navbar />
         
         <CreatePost />
         <div className="Home">
-            <PostsDisplayer />
+            <PostsDisplayer User={user}/>
             <SideProfile />
         </div>
         

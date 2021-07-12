@@ -170,11 +170,11 @@
 .heart-pop-image{
     width: 70px;
     height:70px;
-    display: none;
+   visibility: hidden;
     
 }
 .makepop{
-    display: flex;
+     visibility: visible;
     animation:  popout ease-out 0.3s;
 }
 @keyframes popout{

@@ -253,6 +253,33 @@ router.post("/addComment",(req,res)=>{
 
 
 router.post("/getfeedpost",(req,res)=>{
-    console.log(req.body);
+   const {user}=req.body;
+   
+
+   User.findOne({_id:user}).
+   populate('Post.Posts').
+   exec((err,User)=>{
+    if(err) console.log(err);
+    else{
+        const random=Math.floor((Math.random() * User.Post.Posts.length - 1) + 1);
+        return res.status(200).json({
+            post:User.Post.Posts[random],
+            postAuthor:User.username,
+            profile_pic:User.profile_pic
+        })
+    }
+    
+   })
+})
+
+router.post("/findUsers",(req,res)=>{
+    const {search}=req.body;
+    const regex= new RegExp(search,'i');
+    User.find({username:{$regex:regex}},(err,users)=>{
+        if(err) return res.status(402).json({error:"No usch user"});
+        else{
+            return res.status(200).json({users:users});
+        }
+    })
 })
 module.exports=router;

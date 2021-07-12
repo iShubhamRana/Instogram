@@ -53,7 +53,6 @@ const MainPost=()=>{
       heart[0].classList.remove("makepop");
       },600)
       proceedLike();
-      
     }
 
     const proceedLike=()=>{
@@ -118,7 +117,7 @@ const MainPost=()=>{
                         <img src={post.User.profile_pic} />
                     </div>
                     <div className="author-info">
-                        <Link>{post.User.username}</Link>
+                        <Link to={"/"+post.User.username}>{post.User.username}</Link>
                          <p>{post.User.name}</p>
                     </div>
                     <div>
@@ -153,7 +152,7 @@ const MainPost=()=>{
                           <img src={comment.User.profile_pic} />
                       </div>
                       <p>
-                          <Link>{comment.User.username}</Link>&nbsp;&nbsp;&nbsp;
+                          <Link to={"/"+comment.User.username}>{comment.User.username}</Link>&nbsp;&nbsp;&nbsp;
                           {comment.text}
                       </p>
                       </div>
